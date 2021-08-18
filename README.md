@@ -1,8 +1,8 @@
 # javascript
 
-algorithms
+// Algorithms:
 
-//Binary search:
+// Binary search:
 
 let arr = [];
 let start = 0;
@@ -24,7 +24,7 @@ function binarySearch(arr, start, end, target) {
 }
 console.log(binarySearch(arr, start, end, target));
 
-//Merge Sort:
+// Merge Sort:
 
 function mergeSort(arr) {
 	if (arr.length < 2) {
@@ -59,3 +59,33 @@ function merge(leftArr, rightArr) {
 
 let array = [5, 2, 9, 6, 0, 7, 3];
 console.log(mergeSort(array));
+
+// Pattern:
+// Static sliding window:
+function main() {
+	const k = 5;
+	let nums = [2, 11, -3, 9, -8, 25, 1, 13, 8, -16];
+	
+	var answer = findMax(nums, k);
+	var maxAverage = answer / k;
+	console.log(maxAverage);
+}
+
+function findMax(nums, k) {
+   var windowSum = 0;
+	var start = 0;
+	var end = 0;
+	var maxi = -1*10**4;
+	var n = nums.length;
+	
+	for(end = 0; end < n; end++) {
+		windowSum += nums[end];
+		if ((end - start + 1) == k) {
+			maxi = Math.max(maxi, windowSum);
+			windowSum -= nums[start];
+			start += 1;
+		}
+	}
+	return maxi;
+}
+main();
